@@ -1,6 +1,6 @@
 import AbstractComponent from './abstract-component';
 
-const createLocalSectionTemplate = () => {
+const createRefreshButtonTemplate = () => {
   return (
     `<button class="refresh__button" type="button"><span class="refresh__button-text">Обновить геолокацию</span></button>`
   );
@@ -12,7 +12,7 @@ export default class RefreshButton extends AbstractComponent {
   }
 
   getTemplate() {
-    return createLocalSectionTemplate();
+    return createRefreshButtonTemplate();
   }
 
   setClickHandler(cb) {

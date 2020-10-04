@@ -71,11 +71,11 @@ const getDirection = (deg) => {
 
 export default class City {
   constructor(data) {
-    this.id = data[`weather`][`id`];
+    this.id = data[`id`];
     this.name = data[`name`];
-    this.description = data[`weather`][`description`];
-    this.icon = data[`weather`][`icon`];
-    this.temp = data[`main`][`temp`];
+    this.description = data[`weather`][0][`description`];
+    this.icon = data[`weather`][0][`icon`];
+    this.temp = Math.round(data[`main`][`temp`]);
     this.wind = {
       speed: data[`wind`][`speed`],
       direction: getDirection(data[`wind`][`deg`])
