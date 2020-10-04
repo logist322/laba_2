@@ -1,0 +1,26 @@
+:root {
+  --main-color: #53547f;
+  --secondary-color: #6d6d6d;
+  --grey-color: #ebebeb;
+  --light-color: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-width: 320px;
+}
+
+.container {
+  margin: 25px;
+}
+
+@media (min-width: 924px) {
+  .container {
+    padding: 25px;
+    margin: 0 auto;
+    width: 924px;
+  }
+}

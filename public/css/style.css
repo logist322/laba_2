@@ -1,0 +1,10 @@
+@import './fonts.css';
+@import './global.css';
+@import './utils.css';
+
+@import './components/local.css';
+@import './components/refresh.css';
+@import './components/local-weather.css';
+@import './components/weather-details.css';
+@import './components/favorites.css';
+@import './components/favorite-item.css';

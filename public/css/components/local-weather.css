@@ -1,0 +1,73 @@
+.local-weather__city {
+  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-size: 25px;
+  color: var(--main-color);
+
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.local-weather__short-info {
+  display: flex;
+
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.local-weather__icon {
+  margin-right: 60px;
+}
+
+.local-weather__degrees {
+  font-family: "Roboto-Medium", "Arial", sans-serif;
+  font-size: 60px;
+  color: var(--secondary-color);
+  line-height: 1;
+}
+
+@media (min-width: 426px) {
+  .local-weather__city {
+    font-size: 28px;
+  }
+
+  .local-weather__degrees {
+    font-size: 70px;
+  }
+}
+
+@media (min-width: 924px) {
+  .local-weather {
+    display: grid;
+    grid-template-columns: auto auto;
+    column-gap: 75px;
+    
+    margin-bottom: 50px;
+  }
+
+  .local-weather__general {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .local-weather__short-info {
+    display: flex;
+  
+    margin-bottom: 0;
+  }
+
+  .local-weather__city {
+    font-size: 32px;
+    margin-bottom: 30px;
+  }
+
+  .local-weather__icon {
+    width: 120px;
+    height: 120px;
+  }
+
+  .local-weather__degrees {
+    font-size: 100px;
+    line-height: 1;
+  }
+}

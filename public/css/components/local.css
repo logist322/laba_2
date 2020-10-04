@@ -1,0 +1,9 @@
+.local__refresh {
+  margin-bottom: 15px;
+}
+
+@media (min-width: 924px) {
+  .local__refresh {
+    margin-bottom: 25px;
+  }
+}
