@@ -70,7 +70,11 @@ const getDirection = (deg) => {
 };
 
 export default class City {
-  constructor(data) {
+  constructor() {
+    this.setData = this.setData.bind(this);
+  }
+
+  setData(data) {
     this.id = data[`id`];
     this.name = data[`name`];
     this.description = data[`weather`][0][`description`];

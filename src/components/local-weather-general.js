@@ -1,4 +1,4 @@
-import AbstractComponent from './abstract-component';
+import AbstractSmartComponent from './abstract-smart-component';
 
 const createLocalWeatherGeneralTemplate = ({name, icon, description, temp}) => {
   return (
@@ -14,12 +14,15 @@ const createLocalWeatherGeneralTemplate = ({name, icon, description, temp}) => {
   );
 }
 
-export default class LocalWeatherGeneral extends AbstractComponent {
+export default class LocalWeatherGeneral extends AbstractSmartComponent {
   constructor(city) {
     super();
 
     this._city = city;
   }
+
+  recoveryListeners() {
+  };
 
   getTemplate() {
     return createLocalWeatherGeneralTemplate(this._city);

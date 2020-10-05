@@ -1,4 +1,4 @@
-import AbstractComponent from './abstract-component';
+import AbstractSmartComponent from './abstract-smart-component';
 
 const createWeatherDetailsTemplate = ({wind, clouds, pressure, humidity, coordinates}) => {
   return (
@@ -31,12 +31,15 @@ const createWeatherDetailsTemplate = ({wind, clouds, pressure, humidity, coordin
   );
 }
 
-export default class WeatherDetails extends AbstractComponent {
+export default class WeatherDetails extends AbstractSmartComponent {
   constructor(city) {
     super();
 
     this._city = city;
   }
+
+  recoveryListeners() {
+  };
 
   getTemplate() {
     return createWeatherDetailsTemplate(this._city);
