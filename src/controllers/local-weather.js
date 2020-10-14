@@ -6,13 +6,13 @@ import LocalWeatherGeneralComponent from '../components/local-weather-general';
 import WeatherDetailsComponent from '../components/weather-details';
 
 import CityModel from '../models/city';
-
-// import data from '../mock/data';
+import API from "../api";
 
 export default class LocalWeather {
   constructor(container) {
     this._container = container;
     this._cityModel = new CityModel();
+    this._api = new API();
 
     this._localHeaderComponent = new LocalHeaderComponent();
     this._localWeatherContainerComponent = new LocalWeatherContainerComponent();
@@ -26,10 +26,7 @@ export default class LocalWeather {
     render(this._container, this._localHeaderComponent);
     this._localHeaderComponent.setClickHandler(this.buttonClickHandler);
 
-    fetch('https://api.openweathermap.org/data/2.5/weather?id=524894&units=metric&appid=2d8420f5edb545e419bf06deee1dd59d')
-      .then((res) => {
-        return res.json();
-      })
+    this._api.getDataByGeo()
       .then((data) => {
         this._cityModel.setData(data);
         
@@ -41,7 +38,19 @@ export default class LocalWeather {
   }
 
   buttonClickHandler() {
-    this._localWeatherGeneralComponent.rerender();
-    this._weatherDetailsComponent.rerender();
+    this._localHeaderComponent.setLoadingMode();  
+
+    this._api.getDataByGeo()
+      .then((data) => {
+        this._cityModel.setData(data);
+        
+        this._localWeatherGeneralComponent.rerender();
+        this._weatherDetailsComponent.rerender();
+
+        this._localHeaderComponent.setDefaultMode();
+      })
+      .catch(() => {
+        this._localHeaderComponent.setErrorMode();
+      });    
   }
 }

@@ -1,7 +1,6 @@
 import LocalWeatherController from './controllers/local-weather';
 import FavoritesBoardController from './controllers/favorites-board';
 
-
 const localWeatherContainerElement = document.querySelector(`.local`);
 const favoritesContainerElement = document.querySelector(`.favorites`);
 

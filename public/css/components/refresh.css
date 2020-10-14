@@ -1,3 +1,13 @@
+@keyframes round {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .refresh {
   display: flex;
   align-items: center;
@@ -13,6 +23,7 @@
 }
 
 .refresh__button {
+  position: relative;
   width: 40px;
   height: 40px;
   border: none;
@@ -60,6 +71,24 @@
 
   .refresh__button {
     margin: 0 auto;
+  }
+
+  .refresh__button--loading::after {
+    --size: 40px;
+
+    position: absolute;
+    top: calc(50% - var(--size)/2);
+    left: 120%;
+    content: "";
+    width: var(--size);
+    height: var(--size);
+    background-image: url(../../img/refresh-dark.svg);
+    pointer-events: none;
+    animation: 1.5s round linear infinite;
+  }
+
+  .refresh__button--error {
+    box-shadow: 0 0 15px 0 tomato;
   }
 
   .refresh__button-text {
