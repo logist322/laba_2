@@ -1,3 +1,29 @@
+@keyframes shake {
+  from {
+    transform: translateX(0);
+  }
+
+  20% {
+    transform: translateX(-20px);
+  }
+
+  40% {
+    transform: translateX(20px);
+  }
+
+  60% {
+    transform: translateX(-20px);
+  }
+
+  80% {
+    transform: translateX(20px);
+  }
+
+  to {
+    transform: translateX(0px);
+  }
+}
+
 .local-weather__city {
   font-family: "Roboto-Medium", "Arial", sans-serif;
   font-size: 25px;
@@ -55,6 +81,10 @@
     column-gap: 75px;
     
     margin-bottom: 50px;
+  }
+
+  .local-weather--error {
+    animation: 0.5s shake;
   }
 
   .local-weather__general {

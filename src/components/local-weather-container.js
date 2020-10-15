@@ -16,4 +16,9 @@ export default class LocalWeatherContainer extends AbstractComponent {
   getTemplate() {
     return createLocalWeatherContainerTemplate();
   }
+
+  shake() {
+    this._element.classList.add(`local-weather--error`);
+    setTimeout(() => {this._element.classList.remove(`local-weather--error`)}, 500);
+  }
 }

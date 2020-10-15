@@ -49,8 +49,11 @@ export default class LocalWeather {
 
         this._localHeaderComponent.setDefaultMode();
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
+        
         this._localHeaderComponent.setErrorMode();
+        this._localWeatherContainerComponent.shake();
       });    
   }
 }

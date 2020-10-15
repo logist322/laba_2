@@ -72,9 +72,15 @@
   .refresh__button {
     margin: 0 auto;
   }
+  
+  .refresh__button--loading {    
+    --color: rgb(83, 84, 127, 0.7);
 
+    background-color: var(--color);
+  }
+  
   .refresh__button--loading::after {
-    --size: 40px;
+  --size: 40px;
 
     position: absolute;
     top: calc(50% - var(--size)/2);
@@ -88,7 +94,10 @@
   }
 
   .refresh__button--error {
-    box-shadow: 0 0 15px 0 tomato;
+    --color: red;
+    box-shadow: 0 0 15px 0 var(--color);
+    background-color: var(--color);
+    font-weight: bold;
   }
 
   .refresh__button-text {
