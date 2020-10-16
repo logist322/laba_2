@@ -6,13 +6,12 @@ import LocalWeatherGeneralComponent from '../components/local-weather-general';
 import WeatherDetailsComponent from '../components/weather-details';
 
 import CityModel from '../models/city';
-import API from "../api";
 
 export default class LocalWeather {
-  constructor(container) {
+  constructor(container, api) {
     this._container = container;
     this._cityModel = new CityModel();
-    this._api = new API();
+    this._api = api;
 
     this._localHeaderComponent = new LocalHeaderComponent();
     this._localWeatherContainerComponent = new LocalWeatherContainerComponent();

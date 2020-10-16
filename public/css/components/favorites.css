@@ -79,6 +79,7 @@
 
 @media (min-width: 924px) {
   .favorites__header {
+    position: relative;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,6 +91,16 @@
 
   .favorites__input {
     width: 280px;
+  }
+
+  .favorites__autocomplete {
+    display: block;
+    width: 280px;
+    height: 40px;
+    position: absolute;
+    right: 55px;
+    top: 40px;
+    background-color: lightblue;
   }
 
   .favorites__add-button {
