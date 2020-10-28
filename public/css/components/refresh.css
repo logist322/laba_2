@@ -32,10 +32,36 @@
   margin: 0 40px 0 auto;
 
   background-color: var(--main-color);
+}
+
+.refresh__button:disabled {
+  --color: rgb(83, 84, 127, 0.7);
+
+  background-color: var(--color);
+}
+
+.refresh__button::after {
+  --size: 40px;
+
+  position: absolute;
+  top: calc(50% - (var(--size) - 10px) / 2);
+  left: calc(50% - (var(--size) - 10px) / 2);
+  content: "";
+  width: calc(var(--size) - 10px);
+  height: calc(var(--size) - 10px);
   background-image: url(../../img/refresh.svg);
-  background-size: 30px 30px;
-  background-repeat: no-repeat;
-  background-position: 50% 50%;
+  pointer-events: none;
+}
+
+.refresh__button--loading::after {
+  animation: 1.5s round linear infinite;
+}
+
+.refresh__button--error {
+  --color: red;
+  box-shadow: 0 0 15px 0 var(--color);
+  background-color: var(--color);
+  font-weight: bold;
 }
 
 .refresh__button-text {
@@ -53,6 +79,21 @@
     width: 210px;
     background-image: none;
     margin-right: 0;
+  }
+
+  .refresh__button::after {
+    display: none;
+    --size: 40px;
+
+    top: calc(50% - var(--size)/2);
+    left: calc(-2 * var(--size));
+    width: var(--size);
+    height: var(--size);
+    background-image: url(../../img/refresh-dark.svg);
+  }
+
+  .refresh__button--loading::after {
+    display: block;
   }
 
   .refresh__button-text {
@@ -73,31 +114,8 @@
     margin: 0 auto;
   }
   
-  .refresh__button--loading {    
-    --color: rgb(83, 84, 127, 0.7);
-
-    background-color: var(--color);
-  }
-  
-  .refresh__button--loading::after {
-  --size: 40px;
-
-    position: absolute;
-    top: calc(50% - var(--size)/2);
+  .refresh__button::after {
     left: 120%;
-    content: "";
-    width: var(--size);
-    height: var(--size);
-    background-image: url(../../img/refresh-dark.svg);
-    pointer-events: none;
-    animation: 1.5s round linear infinite;
-  }
-
-  .refresh__button--error {
-    --color: red;
-    box-shadow: 0 0 15px 0 var(--color);
-    background-color: var(--color);
-    font-weight: bold;
   }
 
   .refresh__button-text {

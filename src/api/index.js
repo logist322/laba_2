@@ -1,5 +1,5 @@
 const ENDPOINT = `https://api.openweathermap.org/data/2.5/`;
-const TOKKEN = `2d8420f5edb545e419bf06deee1dd59d`;
+const TOKKEN = `d136e52c1f0eee76445085fa375a3f40`;
 
 const DEFAULT_COORDS = {
   latitude: 59.9344574,
@@ -53,11 +53,12 @@ export default class Api {
     this._localStorage.setItem(`favoriteCities`, JSON.stringify(arr));
   }
 
-  // addCityInStorage(id) {
-  //   const cities = this._getCitiesFromStorage();
+  _addCityInStorage(id) {
+    const cities = this._getCitiesFromStorage();
+    cities.push(id)
 
-  //   this._setCitiesInStorage(cities.push(id));
-  // }
+    this._setCitiesInStorage(cities);
+  }
 
   removeCityFromStorage(id) {
     const cities = this._getCitiesFromStorage();
@@ -71,6 +72,27 @@ export default class Api {
     return fetch(`${ENDPOINT}group?id=${ids}&units=metric&appid=${TOKKEN}`)
       .then((res) => {
         return res.json();
+      });
+  }
+
+  getDataByName(cityName) {
+    let isOK = false; 
+
+    return fetch(`${ENDPOINT}weather?q=${cityName.trim()}&units=metric&appid=${TOKKEN}`)
+      .then((res) => {
+        if (res.ok) {
+          isOK = true;
+          
+          return res.json();
+        }
+
+        throw new Error(`Не удалось найти город "${cityName}". Попробуйте снова.`);
+      }).then((res) => {
+        if (isOK) {
+          this._addCityInStorage(res.id);
+        }        
+
+        return res;
       });
   }
 

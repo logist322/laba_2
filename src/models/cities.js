@@ -5,6 +5,15 @@ export default class CitiesModel {
     this._cities = [];
   }
 
+  addCity(data) {
+    const cityModel = new CityModel();
+    cityModel.setData(data);
+
+    this._cities.push(cityModel);
+
+    return cityModel;
+  }
+
   setCities(data) {
     this._cities = data.list.map((city) => {
       const cityModel = new CityModel();

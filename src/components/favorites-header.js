@@ -15,8 +15,6 @@ const createFavoritesHeaderTemplate = () => {
 export default class FavoritesHeader extends AbstractComponent {
   constructor() {
     super();
-
-    this._value = null;
   }
 
   getTemplate() {
@@ -24,21 +22,24 @@ export default class FavoritesHeader extends AbstractComponent {
   }
 
   setAddHandler(cb) {
-    this._element.querySelector(`.favorites__add-button`).addEventListener(`click`, (evt) => {
-      evt.preventDefault();
-      
-      if (!this._value) {
-        return;
-      }
+    const inputElement = this._element.querySelector(`.favorites__input`);
+    const addButtonElement = this._element.querySelector(`.favorites__add-button`);
 
-      cb(this._value);
-    });
+    addButtonElement.addEventListener(`click`, (evt) => {
+      evt.preventDefault();
+
+      cb(inputElement.value);
+      inputElement.value = ``;
+    })
   }
 
-  setInputHandler(cb) {
-    this._element.querySelector(`.favorites__input`).addEventListener(`input`, (evt) => {
-      this._value = null;
-      cb(evt.target.value);
-    })
+  setDefaultMode() {
+    this._element.querySelector(`.favorites__add-button`).disabled = false;
+    this._element.querySelector(`.favorites__input`).disabled = false;
+  }
+
+  setLoadingMode() {
+    this._element.querySelector(`.favorites__add-button`).disabled = true;
+    this._element.querySelector(`.favorites__input`).disabled = true;
   }
 }
